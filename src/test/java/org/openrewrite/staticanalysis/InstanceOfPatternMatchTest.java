@@ -47,7 +47,7 @@ class InstanceOfPatternMatchTest implements RewriteTest {
                   public class A {
                       void test(Object o) {
                           Object s = 1;
-                          if (o instanceof String && ((String) (o)).length() > 0) {
+                          if (o instanceof String && ((String) (o)).isEmpty()) {
                               if (((String) o).length() > 1) {
                                   System.out.println(o);
                               }
@@ -59,7 +59,7 @@ class InstanceOfPatternMatchTest implements RewriteTest {
                   public class A {
                       void test(Object o) {
                           Object s = 1;
-                          if (o instanceof String string && string.length() > 0) {
+                          if (o instanceof String string && string.isEmpty()) {
                               if (string.length() > 1) {
                                   System.out.println(o);
                               }
@@ -265,7 +265,7 @@ class InstanceOfPatternMatchTest implements RewriteTest {
                   public class A {
                       void test(Object o) {
                           Object s = 1;
-                          if (convert(o) instanceof String && ((String) convert(o)).length() > 0) {
+                          if (convert(o) instanceof String && ((String) convert(o)).isEmpty()) {
                               if (((String) convert(o)).length() > 1) {
                                   System.out.println(o);
                               }
@@ -326,7 +326,7 @@ class InstanceOfPatternMatchTest implements RewriteTest {
                 """
                   public class A {
                       void test(Object o) {
-                          if (o instanceof String s && s.length() > 0) {
+                          if (o instanceof String s && s.isEmpty()) {
                               System.out.println(s);
                           }
                       }
@@ -344,7 +344,7 @@ class InstanceOfPatternMatchTest implements RewriteTest {
                 """
                   public class A {
                       void test(Object o) {
-                          if (o instanceof String || ((String) o).length() > 0) {
+                          if (o instanceof String || ((String) o).isEmpty()) {
                               if (((String) o).length() > 1) {
                                   System.out.println(o);
                               }

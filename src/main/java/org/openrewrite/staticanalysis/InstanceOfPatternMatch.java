@@ -161,7 +161,7 @@ public class InstanceOfPatternMatch extends Recipe {
                     .filter(k -> TypeUtils.isAssignableTo(type, k.getType())
                                  && SemanticallyEqual.areEqual(k.getExpression(), expression))
                     .findAny();
-            if (!existing.isPresent()) {
+            if (existing.isEmpty()) {
                 instanceOfs.put(new ExpressionAndType(expression, type), instanceOf);
                 this.contexts.put(instanceOf, contexts);
             }
@@ -382,7 +382,7 @@ public class InstanceOfPatternMatch extends Recipe {
                                 builder.append(Character.toLowerCase(c));
                             }
                         }
-                        baseName = builder.length() > 0 ? builder.toString() : "o";
+                        baseName = builder.isEmpty() ? builder.toString() : "o";
                         break;
                     case NORMAL:
                         Set<String> namesInScope = contextScopes.stream()
